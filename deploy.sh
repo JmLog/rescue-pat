@@ -1,1 +1,2 @@
-echo ls -al
+composer update
+composer dump-autoload
