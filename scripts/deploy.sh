@@ -1,3 +1,3 @@
-composer install
-composer update
-composer dump-autoload
+sudo composer install
+sudo composer update
+sudo composer dump-autoload
