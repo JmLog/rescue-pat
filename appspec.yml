@@ -3,17 +3,9 @@ os: linux
 files:
   - source:  /
     destination: /var/www/html/resque-pat/
-    overwrite: yes
-
-permissions:
-  - object: /
-    pattern: "**"
-    owner: ec2-user
-    group: ec2-user
-    mode: 755
 
 hooks:
-  ApplicationStart:
-    - location: deploy.sh
-      timeout: 60
+  AfterInstall:
+    - location: ./devops/hooks/after-install.sh
       runas: ec2-user
+
