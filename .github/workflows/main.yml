@@ -1,4 +1,4 @@
-name: resque-pat-deploy
+name: rescue-pat-deploy
 
 on:
   push:

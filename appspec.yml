@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source:  /
-    destination: /var/www/html/resque-pat/
+    destination: /var/www/html/rescue-pat/
 
 hooks:
   AfterInstall:

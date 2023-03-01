@@ -1,3 +1,3 @@
 # shellcheck disable=SC2164
-cd /var/www/html/resque-pat
+cd /var/www/html/rescue-pat
 sudo composer update
