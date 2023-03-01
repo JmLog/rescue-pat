@@ -9,10 +9,10 @@ on:
   workflow_dispatch:
 
 env:
-  S3_BUCKET_NAME: resque-pat
+  S3_BUCKET_NAME: rescue-pat
   AWS_REGION: ap-northeast-2
-  CODEDEPLOY_NAME: resque-pat-deploy
-  CODEDEPLOY_GROUP: resque-pat-deploy-group
+  CODEDEPLOY_NAME: rescue-pat
+  CODEDEPLOY_GROUP: rescue-pat-deploy-group
 
 jobs:
   build:
