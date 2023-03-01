@@ -21,8 +21,8 @@ sudo chmod -R 775 bootstrap/cache
 sudo chmod +x artisan
 
 # install composer dependcies
-sudo -u $WEB_USER composer install --no-dev --no-progress --prefer-dist
-
+#sudo -u $WEB_USER composer install --no-dev --no-progress --prefer-dist
+sudo composer install
 # load .env file from AWS Systems Manager
 #./devops/scripts/generate-env.sh
 
