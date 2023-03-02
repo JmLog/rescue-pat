@@ -12,18 +12,20 @@ export WEB_USER="ec2-user"
 cd $WEB_DIR || exit
 
 # change user owner to ubuntu & fix storage permission issues.
-#sudo chown -R ec2-user:ec2-user .
-#sudo chown -R www-data storage
+sudo chown -R ec2-user:ec2-user .
+chmod -R ugo+rw /.composer
+sudo chown -R www-data storage
+sudo chown -R www-data bootstrap/cache
 #sudo chmod -R u+x .
 #sudo chmod g+w -R storage
 #sudo chmod -R 775 storage
 #sudo chmod -R 775 bootstrap/cache
 #sudo chmod +x artisan
-chmod -R ugo+rw /.composer
-chown -R $WEB_USER:www-data /var/www/html/rescue-pat/storage/
-chown -R $WEB_USER:www-data /var/www/html/rescue-pat/bootstrap/cache/
-chmod -R 775 /var/www/html/rescue-pat/storage/
-chmod -R 775 /var/www/html/rescue-pat/bootstrap/cache/
+
+#chown -R $WEB_USER:www-data /var/www/html/rescue-pat/storage/
+#chown -R $WEB_USER:www-data /var/www/html/rescue-pat/bootstrap/cache/
+#chmod -R 775 /var/www/html/rescue-pat/storage/
+#chmod -R 775 /var/www/html/rescue-pat/bootstrap/cache/
 
 
 # install composer dependcies
