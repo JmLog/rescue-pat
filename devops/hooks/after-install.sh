@@ -13,9 +13,10 @@ cd $WEB_DIR || exit
 
 # change user owner to ubuntu & fix storage permission issues.
 sudo chown -R ec2-user:ec2-user .
-chmod -R ugo+rw /.composer
-sudo chown -R www-data storage
-sudo chown -R www-data bootstrap/cache
+#chmod -R ugo+rw /.composer
+#sudo chown -R www-data storage
+#sudo chown -R www-data bootstrap/cache
+
 #sudo chmod -R u+x .
 #sudo chmod g+w -R storage
 #sudo chmod -R 775 storage
