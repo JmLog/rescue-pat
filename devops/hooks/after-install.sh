@@ -12,9 +12,9 @@ export WEB_USER="ec2-user"
 cd $WEB_DIR
 
 # change user owner to ubuntu & fix storage permission issues.
-sudo chmod -R 775 storage
-sudo chmod -R 775 bootstrap/cache
-sudo chmod +x artisan
+sudo chmod -R 777 storage
+sudo chmod -R 777 bootstrap/cache
+#sudo chmod +x artisan
 
 # install composer dependcies
 #sudo -u $WEB_USER composer install --no-dev --no-progress --prefer-dist
