@@ -26,4 +26,4 @@ sudo composer dump-autoload
 
 # generate app key & run migrations
 sudo -u $WEB_USER php artisan key:generate
-sudo -u $WEB_USER php artisan migrate --force --no-interaction
+#sudo -u $WEB_USER php artisan migrate --force --no-interaction
