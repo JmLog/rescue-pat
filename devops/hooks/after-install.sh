@@ -20,10 +20,10 @@ cd $WEB_DIR || exit
 #sudo chmod -R 775 bootstrap/cache
 #sudo chmod +x artisan
 chmod -R ugo+rw /.composer
-chown -R $WEB_USER:www-data /var/www/html/storage/
-chown -R $WEB_USER:www-data /var/www/html/bootstrap/cache/
-chmod -R 775 /var/www/html/storage/
-chmod -R 775 /var/www/html/bootstrap/cache/
+chown -R $WEB_USER:www-data /var/www/html/rescue-pat/storage/
+chown -R $WEB_USER:www-data /var/www/html/rescue-pat/bootstrap/cache/
+chmod -R 775 /var/www/html/rescue-pat/storage/
+chmod -R 775 /var/www/html/rescue-pat/bootstrap/cache/
 
 
 # install composer dependcies
