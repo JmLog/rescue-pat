@@ -12,8 +12,8 @@ export WEB_USER="ec2-user"
 cd $WEB_DIR || exit
 
 # change user owner to ubuntu & fix storage permission issues.
-sudo chmod -R 777 storage
-sudo chmod -R 777 bootstrap/cache
+sudo chown -R www-data:www-data storage
+sudo chown -R www-data:www-data bootstrap/cache
 
 #sudo chmod -R u+x .
 #sudo chmod g+w -R storage
