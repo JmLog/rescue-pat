@@ -17,6 +17,7 @@ cd $WEB_DIR
 #sudo chmod -R u+x .
 #sudo chmod g+w -R storage
 sudo chmod -R 775 storage
+sudo chmod -R 775 storage/logs
 sudo chmod -R 775 bootstrap/cache
 sudo chmod +x artisan
 
