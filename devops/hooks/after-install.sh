@@ -9,16 +9,22 @@ export WEB_DIR="/var/www/html/rescue-pat"
 export WEB_USER="ec2-user"
 
 # Change directory to project.
-cd $WEB_DIR
+cd $WEB_DIR || exit
 
 # change user owner to ubuntu & fix storage permission issues.
 #sudo chown -R ec2-user:ec2-user .
 #sudo chown -R www-data storage
 #sudo chmod -R u+x .
 #sudo chmod g+w -R storage
-sudo chmod -R 775 storage
-sudo chmod -R 775 bootstrap/cache
-sudo chmod +x artisan
+#sudo chmod -R 775 storage
+#sudo chmod -R 775 bootstrap/cache
+#sudo chmod +x artisan
+chmod -R ugo+rw /.composer
+chown -R $WEB_USER:www-data /var/www/html/storage/
+chown -R $WEB_USER:www-data /var/www/html/bootstrap/cache/
+chmod -R 775 /var/www/html/storage/
+chmod -R 775 /var/www/html/bootstrap/cache/
+
 
 # install composer dependcies
 #sudo -u $WEB_USER composer install --no-dev --no-progress --prefer-dist
