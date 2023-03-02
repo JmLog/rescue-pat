@@ -16,8 +16,7 @@ cd $WEB_DIR
 #sudo chown -R www-data storage
 #sudo chmod -R u+x .
 #sudo chmod g+w -R storage
-sudo chmod -R 775 storage
-sudo chmod -R 775 storage/logs
+sudo chmod o+w ./storage/ -R
 sudo chmod -R 775 bootstrap/cache
 sudo chmod +x artisan
 
