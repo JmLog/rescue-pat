@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::prefix('auth')->group(function () {
+    Route::get('/login', [\App\Http\Controllers\Auth\AuthController::class, 'index'])->name('auth.index');
+    Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, 'login'])->name('auth.login');
+    Route::get('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('auth.logout');
 });
 
-Route::get('/login', function () {
-    return view('login');
+Route::middleware('admin.auth')->group(function(){
+    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
 });
+
+
+
+

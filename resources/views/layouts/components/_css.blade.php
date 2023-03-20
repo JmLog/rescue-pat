@@ -5,9 +5,10 @@
 
 <!-- Common -->
 <link rel="stylesheet" href="{{ mix('css/common/common.css') }}">
+{{--<link rel="stylesheet" href="css/common/common.css">--}}
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="css/plugin/bootstrap/style.default.min.css">
+<link rel="stylesheet" href="{{ mix('css/plugin/bootstrap/style.default.min.css') }}">
 
 <!-- Style -->
 <link rel="stylesheet" href="{{ mix('css/style.css') }}">
