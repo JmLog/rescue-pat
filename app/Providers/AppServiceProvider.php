@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //# 정규식 함수
+        require_once app_path('Helpers/regex.php');
     }
 
     /**
