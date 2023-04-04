@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('auth')->group(function () {
+    //# 로그인
     Route::get('/login', [\App\Http\Controllers\Auth\AuthController::class, 'index'])->name('auth.index');
     Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, 'login'])->name('auth.login');
     Route::get('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('auth.logout');
+
+    Route::get('/register', [\App\Http\Controllers\Auth\AuthController::class, 'register'])->name('auth.register');
+    Route::post('/register', [\App\Http\Controllers\Auth\AuthController::class, 'register_process'])->name('auth.register.process');
+
 });
 
 Route::middleware('admin.auth')->group(function(){

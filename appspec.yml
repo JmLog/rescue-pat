@@ -8,4 +8,7 @@ hooks:
   AfterInstall:
     - location: ./devops/hooks/after-install.sh
       runas: ec2-user
+#  ApplicationStart:
+#    - location: ./devops/hooks/application_start.sh
+#      runas: ec2-user
 

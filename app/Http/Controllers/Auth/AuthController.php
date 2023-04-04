@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\auth\AuthRequest;
 use App\Services\Auth\AuthService;
-use App\Services\Users\UserService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use function Psy\debug;
 
 class AuthController extends Controller
 {
@@ -25,17 +23,12 @@ class AuthController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function login(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-
-        $res = $this->authService->login($request, $credentials, false);
+        $res = $this->authService->login($request, false);
 
         if($res) return redirect()->intended(route('index'));
         return redirect()->back();
@@ -48,6 +41,20 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('auth.login');
+    }
+
+    public function register(): Factory|View|Application
+    {
+        return view('auth.register');
+    }
+
+    public function register_process(AuthRequest $request): \Illuminate\Http\RedirectResponse
+    {
+        $data = $request->only('email', 'password', 'name');
+        $res = $this->authService->register($data);
+
+        if($res) return redirect()->route('auth.login');
+        return redirect()->route('auth.register');
     }
 
 }

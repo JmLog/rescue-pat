@@ -14,4 +14,5 @@ class AuthRepository extends BaseRepository implements AuthRepositoryInterface
         parent::__construct($model);
         $this->model = $model;
     }
+
 }
