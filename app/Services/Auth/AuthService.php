@@ -32,7 +32,7 @@ class AuthService
 
     public function register($credentials)
     {
-//        $credentials['password'] = bcrypt($credentials['password']);
+        $credentials['password'] = bcrypt($credentials['password']);
         return $this->authRepository->create($credentials);
     }
 
