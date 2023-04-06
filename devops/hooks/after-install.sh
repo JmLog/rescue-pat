@@ -24,8 +24,8 @@ sudo composer dump-autoload
 # load .env file from AWS Systems Manager
 #./devops/scripts/generate-env.sh
 
-#php artisan config:cache
-#php artisan route:clear
+php artisan config:cache
+php artisan route:clear
 
 # generate app key & run migrations
 sudo -u $WEB_USER php artisan key:generate
