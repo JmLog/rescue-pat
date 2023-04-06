@@ -30,7 +30,7 @@ class AuthService
         return false;
     }
 
-    public function register($credentials)
+    public function register($credentials): \Illuminate\Database\Eloquent\Model
     {
         $credentials['password'] = bcrypt($credentials['password']);
         return $this->authRepository->create($credentials);

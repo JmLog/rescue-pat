@@ -12,7 +12,8 @@
                         <div class="card-body p-lg-5">
                             <h3 class="mb-4">Get started with RescuePat</h3>
                             <p class="text-muted text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            <form action="{{ route('auth.register.process') }}" method="post">
+{{--                            <form action="{{ route('auth.register.process') }}" method="post">--}}
+                            <form id="register_form" action="" method="post">
                                 @csrf
                                 <div class="form-floating mb-3">
                                     <input class="form-control" id="username" name="name" type="text" placeholder="name@example.com">
@@ -26,16 +27,16 @@
                                     <input class="form-control" id="floatingPassword" name="password" type="password" placeholder="Password">
                                     <label for="floatingPassword">Password</label>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input class="form-control" id="floatingPassword" name="password_check" type="password" placeholder="Password Check">
-                                    <label for="floatingPassword">Password Check</label>
-                                </div>
+{{--                                <div class="form-floating mb-3">--}}
+{{--                                    <input class="form-control" id="floatingPassword" name="password_check" type="password" placeholder="Password Check">--}}
+{{--                                    <label for="floatingPassword">Password Check</label>--}}
+{{--                                </div>--}}
 {{--                                <div class="form-check mb-3">--}}
 {{--                                    <input class="form-check-input" type="checkbox" name="agree" id="agree">--}}
 {{--                                    <label class="form-check-label" for="agree"><a href="#">이용약관</a>에 동의합니다.</label>--}}
 {{--                                </div>--}}
                                 <div class="form-group">
-                                    <button class="btn btn-primary" id="register" type="submit" name="registerSubmit">회원가입</button>
+                                    <button class="btn btn-primary" id="register" type="button" name="registerSubmit" onclick="new_register()">회원가입</button>
                                 </div>
                             </form>
                         </div>
@@ -47,4 +48,43 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function new_register () {
+            let form = $('#register_form')[0];
+            let data = new FormData(form);
+
+            $.ajax({
+                url: "{{ route('auth.register.process') }}",
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (result) {
+                    if (result.code == 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '성공',
+                            text: result.message,
+                            confirmButtonText:
+                                '<i class="fa fa-thumbs-up"></i> 로그인',
+                        }).then((res) => {
+                            if(res.isConfirmed) {
+                                window.location.href = "{{ route('auth.login') }}";
+                            }
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '실패',
+                            text: result.message,
+                        })
+                    }
+                }
+            });
+        }
+    </script>
 @endsection
