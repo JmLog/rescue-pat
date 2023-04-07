@@ -24,11 +24,11 @@ Route::prefix('auth')->group(function () {
     Route::post('/register', [\App\Http\Controllers\Auth\AuthController::class, 'register_process'])->name('auth.register.process');
 });
 
-Route::middleware('admin.auth')->group(function(){
-    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
-});
+//Route::middleware('admin.auth')->group(function(){
+//    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
+//});
 
-//Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
+Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
 
 
 
