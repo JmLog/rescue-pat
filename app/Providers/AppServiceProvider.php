@@ -15,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //# 정규식 함수
         require_once app_path('Helpers/regex.php');
+        //# 공통 사용 함수
+        require_once app_path('Helpers/CommonFunction.php');
     }
 
     /**

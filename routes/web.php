@@ -19,14 +19,16 @@ Route::prefix('auth')->group(function () {
     Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, 'login'])->name('auth.login');
     Route::get('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('auth.logout');
 
+    //# 회원가입
     Route::get('/register', [\App\Http\Controllers\Auth\AuthController::class, 'register'])->name('auth.register');
     Route::post('/register', [\App\Http\Controllers\Auth\AuthController::class, 'register_process'])->name('auth.register.process');
-
 });
 
-Route::middleware('admin.auth')->group(function(){
-    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
-});
+//Route::middleware('admin.auth')->group(function(){
+//    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
+//});
+
+Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
 
 
 

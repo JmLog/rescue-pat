@@ -9,7 +9,10 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -48,13 +51,18 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register_process(AuthRequest $request): \Illuminate\Http\RedirectResponse
+    public function register_process(AuthRequest $request)
     {
-        $data = $request->only('email', 'password', 'name');
-        $res = $this->authService->register($data);
+        try {
+            $validated = $request->validated();
+            $data = $request->only('email', 'password', 'name');
+            $res = $this->authService->register($data);
 
-        if($res) return redirect()->route('auth.login');
-        return redirect()->route('auth.register');
+            if ($res) return responseData('200', $data, '회원가입에 성공하였습니다.');
+            return responseData('400', $data, '회원가입에 실패하였습니다.');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return responseData($e->status, $request->all(), $e->getMessage());
+        }
     }
 
 }
