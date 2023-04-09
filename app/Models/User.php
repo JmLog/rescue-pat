@@ -14,9 +14,4 @@ class User extends Authenticatable
 {
     use SoftDeletes;
     protected $fillable = ['email', 'password', 'name'];
-
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = Hash::make($password);
-    }
 }
