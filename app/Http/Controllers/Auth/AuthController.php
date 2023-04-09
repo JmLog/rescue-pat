@@ -31,10 +31,19 @@ class AuthController extends Controller
 
     public function login(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $res = $this->authService->login($request, false);
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
 
-        if($res) return redirect()->intended(route('index'));
-        return redirect()->back();
+        $res = $this->authService->login($data, false);
+
+        if(!$res) {
+            return redirect()->back();
+        } else {
+            $request->session()->regenerate();
+            return redirect()->intended(route('index'));
+        }
     }
 
     public function logout(Request $request): \Illuminate\Http\RedirectResponse
@@ -51,7 +60,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register_process(AuthRequest $request)
+    public function register_process(AuthRequest $request): \Illuminate\Http\JsonResponse
     {
         try {
             $validated = $request->validated();

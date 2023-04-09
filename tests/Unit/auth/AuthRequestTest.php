@@ -241,16 +241,6 @@ class AuthRequestTest extends TestCase
         $this->assertTrue($res);
     }
 
-
-    public function authService(): AuthService
-    {
-        $model = new User();
-        $repository = new AuthRepository($model);
-        $service = new AuthService($repository);
-
-        return $service;
-    }
-
     /**
      * @param array $data
      * @return bool

@@ -2,7 +2,7 @@ name: rescue-pat-deploy
 
 on:
   push:
-    branches: [ master, dev ]
+    branches: [ master ]
 
   workflow_dispatch:
 

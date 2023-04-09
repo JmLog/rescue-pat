@@ -15,20 +15,12 @@ class AuthService
         $this->authRepository = $repository;
     }
 
-    public function login($request, $remember): bool
+    public function login($data, $remember): bool
     {
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-
-        if (Auth::guard('admin')->attempt($data, $remember)) {
-            $request->session()->regenerate();
-            return true;
-        }
-
-        return false;
+        if (!Auth::guard('admin')->attempt($data, $remember)) return false;
+        return true;
     }
+
 
     public function register($credentials): \Illuminate\Database\Eloquent\Model
     {
