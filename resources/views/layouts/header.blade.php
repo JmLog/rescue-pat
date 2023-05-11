@@ -1,7 +1,7 @@
 @php($auth = \Illuminate\Support\Facades\Auth::guard('admin')->user())
 
 <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow">
-    <a class="navbar-brand fw-bold text-uppercase text-base" href="index.html">
+    <a class="navbar-brand fw-bold text-uppercase text-base" href="{{ route('index') }}">
         <span class="d-none d-brand-partial">RESCUE </span><span class="d-none d-sm-inline">PAT</span>
     </a>
     <ul class="ms-auto d-flex align-items-center list-unstyled mb-0">
@@ -19,7 +19,10 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated" aria-labelledby="userInfo">
                 <div class="dropdown-header text-gray-700">
-                    <h6 class="text-uppercase font-weight-bold">Welcome!</h6><a href="#" onclick="openPopup('{{ route('auth.info', $auth->id) }}', 'width=900,height=1000')">{{ empty($auth) ? '게스트' : $auth->name }} 님!</a>
+                    <h6 class="text-uppercase font-weight-bold">Welcome!</h6>
+                    <a href="#" @if(!empty($auth)) onclick="openPopup('{{ route('auth.info', $auth->id) }}', 'width=900, height=1000')" @endif>
+                        {{ empty($auth) ? '게스트' : $auth->name }} 님!
+                    </a>
                 </div>
                 <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ empty($auth) ? route('auth.login') : route('auth.logout') }}">{{ empty($auth) ? 'Login' : 'Logout' }}</a>
             </div>

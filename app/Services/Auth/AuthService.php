@@ -15,7 +15,7 @@ class AuthService
         $this->authRepository = $repository;
     }
 
-    public function login($data, $remember): bool
+    public function login($data, $remember = false): bool
     {
         if (!Auth::guard('admin')->attempt($data, $remember)) return false;
         return true;

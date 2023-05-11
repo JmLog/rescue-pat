@@ -36,7 +36,9 @@ class AuthController extends Controller
             'password' => $request->password
         ];
 
-        $res = $this->authService->login($data, false);
+        $remember = isset($request->remember);
+
+        $res = $this->authService->login($data, $remember);
 
         if(!$res) {
             return redirect()->back();

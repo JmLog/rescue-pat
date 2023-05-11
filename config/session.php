@@ -198,4 +198,5 @@ return [
 
     'same_site' => 'lax',
 
+    'remember' => 60 * 24 * 7, // 7 days
 ];
