@@ -17,18 +17,18 @@ class BaseRepository implements EloquentRepositoryInterface
     /**
      * @return LengthAwarePaginator
      */
-    public function all(): LengthAwarePaginator
+    public function all(array $columns = ['*'], array $relations = []): LengthAwarePaginator
     {
-        return $this->model::paginate();
+        return $this->model->get($columns);
     }
 
     /**
      * @param int $id
      * @return Model
      */
-    public function findId(int $id): Model
+    public function findId(int $id, array $columns = ['*'], array $relations = []): Model
     {
-        return $this->model::find($id);
+        return $this->model->find($id, $columns);
     }
 
     /**
@@ -37,7 +37,7 @@ class BaseRepository implements EloquentRepositoryInterface
      */
     public function create(array $data = []): Model
     {
-        return $this->model::create($data);
+        return $this->model->create($data);
     }
 
     /**
@@ -46,7 +46,7 @@ class BaseRepository implements EloquentRepositoryInterface
      */
     public function update(array $data = []): bool
     {
-        return $this->model::update($data);
+        return $this->model->update($data);
     }
 
 }

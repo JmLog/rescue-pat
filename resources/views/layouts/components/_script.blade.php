@@ -9,4 +9,5 @@
 <script src="{{ mix('js/plugin/bootstrap/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ mix('js/plugin/bootstrap/theme.js') }}"></script>
 
+<script src="{{ mix('js/common.js') }}"></script>
 

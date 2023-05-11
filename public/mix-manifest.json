@@ -3,7 +3,7 @@
     "/css/plugin/bootstrap/bootstrap.css": "/css/plugin/bootstrap/bootstrap.css",
     "/css/plugin/bootstrap/style.default.min.css": "/css/plugin/bootstrap/style.default.min.css",
     "/css/style.css": "/css/style.css",
-    "/js/plugin/bootstrap/bootstrap.min.js": "/js/plugin/bootstrap/bootstrap.min.js",
     "/js/plugin/bootstrap/bootstrap.bundle.min.js": "/js/plugin/bootstrap/bootstrap.bundle.min.js",
-    "/js/plugin/bootstrap/theme.js": "/js/plugin/bootstrap/theme.js"
+    "/js/plugin/bootstrap/theme.js": "/js/plugin/bootstrap/theme.js",
+    "/js/common.js": "/js/common.js"
 }

@@ -11,4 +11,9 @@ class UserService
     {
         $this->modelRepository = $repository;
     }
+
+    public function getUserList($id): \Illuminate\Database\Eloquent\Model
+    {
+        return $this->modelRepository->findId($id);
+    }
 }

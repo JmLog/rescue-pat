@@ -19,7 +19,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated" aria-labelledby="userInfo">
                 <div class="dropdown-header text-gray-700">
-                    <h6 class="text-uppercase font-weight-bold">Welcome!</h6><small>{{ empty($auth) ? '게스트' : $auth->name }} 님!</small>
+                    <h6 class="text-uppercase font-weight-bold">Welcome!</h6><a href="#" onclick="openPopup('{{ route('auth.info', $auth->id) }}', 'width=900,height=1000')">{{ empty($auth) ? '게스트' : $auth->name }} 님!</a>
                 </div>
                 <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ empty($auth) ? route('auth.login') : route('auth.logout') }}">{{ empty($auth) ? 'Login' : 'Logout' }}</a>
             </div>

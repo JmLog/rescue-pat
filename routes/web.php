@@ -28,7 +28,15 @@ Route::prefix('auth')->group(function () {
 //    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
 //});
 
+//# 대시보드
 Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('index');
+
+
+Route::middleware('admin.auth')->group(function(){
+    Route::prefix('auth')->group(function () {
+        Route::get('/info/{id}', [\App\Http\Controllers\Users\UserController::class, 'index'])->name('auth.info');
+    });
+});
 
 
 

@@ -48,3 +48,8 @@ mix.copy([
 mix.copy([
     'resources/js/plugin/bootstrap/theme.js',
 ], 'public/js/plugin/bootstrap/theme.js');
+
+
+mix.babel([
+    'resources/js/common.js',
+], 'public/js/common.js');

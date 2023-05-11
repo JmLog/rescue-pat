@@ -16,4 +16,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         $this->model = $model;
     }
 
+
+
 }
