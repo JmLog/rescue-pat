@@ -3,6 +3,7 @@
 namespace App\Services\Users;
 
 use App\Repositories\Interfaces\Users\UserRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserService
 {
@@ -12,8 +13,19 @@ class UserService
         $this->modelRepository = $repository;
     }
 
-    public function getUserList($id): \Illuminate\Database\Eloquent\Model
+    /**
+     * @return Collection
+     */
+    public function getUserList(): Collection
     {
-        return $this->modelRepository->findId($id);
+        return $this->modelRepository->all();
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getAdminUsers(): Collection
+    {
+        return $this->modelRepository->getAdmin();
     }
 }

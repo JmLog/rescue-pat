@@ -3,8 +3,8 @@
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\Interfaces\EloquentRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class BaseRepository implements EloquentRepositoryInterface
 {
@@ -15,9 +15,9 @@ class BaseRepository implements EloquentRepositoryInterface
     }
 
     /**
-     * @return LengthAwarePaginator
+     * @return Collection;
      */
-    public function all(array $columns = ['*'], array $relations = []): LengthAwarePaginator
+    public function all(array $columns = ['*'], array $relations = []): Collection
     {
         return $this->model->get($columns);
     }
@@ -47,6 +47,15 @@ class BaseRepository implements EloquentRepositoryInterface
     public function update(array $data = []): bool
     {
         return $this->model->update($data);
+    }
+
+    /**
+     * @param array $data
+     * @return bool
+     */
+    public function delete(array $data = []): bool
+    {
+        return $this->model->delete($data);
     }
 
 }

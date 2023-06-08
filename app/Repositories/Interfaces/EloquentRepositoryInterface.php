@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Interfaces;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -10,7 +11,7 @@ interface EloquentRepositoryInterface
     /**
      * @return LengthAwarePaginator
      */
-    public function all(): LengthAwarePaginator;
+    public function all(): Collection;
 
     /**
      * @param int $id
@@ -29,5 +30,11 @@ interface EloquentRepositoryInterface
      * @return bool
      */
     public function update(array $data = []): bool;
+
+    /**
+     * @param array $data
+     * @return bool
+     */
+    public function delete(array $data = []): bool;
 
 }
